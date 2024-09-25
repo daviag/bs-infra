@@ -13,10 +13,10 @@ docker run -d \
   -p 5432:5432 \
   postgres:16-alpine
 
-cd ../../bs-book-catalog-service
-pwd
-echo "Building catalog-service..."
-docker build -t catalog-service .
+#cd ../../bs-book-catalog-service
+#
+#echo "Building catalog-service..."
+#docker build -t catalog-service .
 
 echo "Running catalog-service..."
 docker run -d \
@@ -25,6 +25,6 @@ docker run -d \
   -p 8080:8080 \
   -e SPRING_DATASOURCE_URL=jdbc:postgresql://bs_postgres:5432/bsdb_catalog \
   -e SPRING_PROFILES_ACTIVE=testdata \
-  catalog-service
+  bs-book-catalog-service
 
 echo "Done."
