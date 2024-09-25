@@ -1,6 +1,22 @@
 services:
-  postgres:
+
+  catalog-service:
+    depends_on:
+      - bs-postgres
+    image: bs-book-catalog-service
+    container_name: catalog-service
+    ports:
+      - 8080:8080
+    environment:
+      - BPL_JVM_THREAD_COUNT=50
+#      - BPL_DEBUG_ENABLED=true
+#      - BPL_DEBUG_PORT=8001
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://bs-postgres:5432/bsdb_catalog
+      - SPRING_PROFILES_ACTIVE=testdata
+
+  bs-postgres:
     image: postgres:16-alpine
+    container_name: bs-postgres
     ports:
       - 5432:5432
 #    volumes:
