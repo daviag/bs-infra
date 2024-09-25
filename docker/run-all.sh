@@ -22,7 +22,7 @@ echo "Running catalog-service..."
 docker run -d \
   --name catalog-service \
   --net catalog-network \
-  -p 8080:8080 \
+  -p 9001:9001 \
   -e SPRING_DATASOURCE_URL=jdbc:postgresql://bs_postgres:5432/bsdb_catalog \
   -e SPRING_PROFILES_ACTIVE=testdata \
   bs-book-catalog-service

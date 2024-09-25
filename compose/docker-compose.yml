@@ -6,7 +6,7 @@ services:
     image: bs-book-catalog-service
     container_name: catalog-service
     ports:
-      - 8080:8080
+      - 9001:9001
     environment:
       - BPL_JVM_THREAD_COUNT=50
 #      - BPL_DEBUG_ENABLED=true

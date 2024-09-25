@@ -1,0 +1,25 @@
+minikube start --cpus 2 --memory 4g --driver docker --profile bookshop
+kubectl get nodes
+kubectl config get-contexts
+kubectl config current-context
+kubectl config use-context bookshop
+
+minikube stop --profile bookshop
+minikube start --profile bookshop
+minikube delete --profile bookshop
+
+kubectl apply -f services
+kubectl delete -f services
+
+kubectl explain <object_name>
+kubectl api-resources
+
+minikube image load catalog-service --profile bookshop
+
+kubectl get all -l app=catalog-service
+kubectl logs deployment/catalog-service
+kubectl describe pod <pod_name>
+kubectl logs <pod_name>
+
+kubectl get svc -l app=catalog-service
+kubectl port-forward service/catalog-service 9001:80
