@@ -1,5 +1,6 @@
 include('../../../../bs-config-service/Tiltfile')
 include('../../../../bs-order-service/Tiltfile')
 include('../../../../bs-book-catalog-service/Tiltfile')
+include('../../../../bs-edge-service/Tiltfile')
 
 update_settings(max_parallel_updates=1)

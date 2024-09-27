@@ -3,7 +3,7 @@
 echo "Starting minikube context..."
 minikube start --profile bookshop
 
-echo "Creating Postgresql DB..."
+echo "Creating Postgresql DB & Redis..."
 kubectl apply -f services
 
 echo "Creating Applications..."
