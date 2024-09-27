@@ -1,9 +1,20 @@
 services:
+  config-service:
+    image: config-service
+    container_name: config_service
+    ports:
+      - 8888:8888
+    environment:
+      - BPL_JVM_THREAD_COUNT=50
+      #      - BPL_DEBUG_ENABLED=true
+      #      - BPL_DEBUG_PORT=8001
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/daviag/bs-config-repo.git
 
   catalog-service:
     depends_on:
       - bs-postgres
-    image: bs-book-catalog-service
+      - config-service
+    image: catalog-service
     container_name: catalog-service
     ports:
       - 9001:9001

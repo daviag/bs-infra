@@ -23,3 +23,11 @@ kubectl logs <pod_name>
 
 kubectl get svc -l app=catalog-service
 kubectl port-forward service/catalog-service 9001:80
+
+kubectl get pods -l app=catalog-service
+kubectl delete pod <pod-name>
+
+tilt up
+tilt down
+
+kubeval --strict -d k8s

@@ -18,6 +18,14 @@ docker run -d \
 #echo "Building catalog-service..."
 #docker build -t catalog-service .
 
+echo "Running config-service..."
+docker run -d \
+  --name config-service \
+  --net catalog-network \
+  -p 8888:8888 \
+  -e SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/daviag/bs-config-repo.git \
+  config-service
+
 echo "Running catalog-service..."
 docker run -d \
   --name catalog-service \
@@ -25,6 +33,6 @@ docker run -d \
   -p 9001:9001 \
   -e SPRING_DATASOURCE_URL=jdbc:postgresql://bs_postgres:5432/bsdb_catalog \
   -e SPRING_PROFILES_ACTIVE=testdata \
-  bs-book-catalog-service
+  catalog-service
 
 echo "Done."
