@@ -30,9 +30,9 @@ services:
     container_name: bs-postgres
     ports:
       - 5432:5432
-#    volumes:
-#      - ~/apps/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=user
-      - POSTGRES_DB=bsdb_catalog
+#      - POSTGRES_DB=bsdb_catalog
+    volumes:
+      - ../postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
