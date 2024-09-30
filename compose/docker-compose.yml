@@ -42,6 +42,7 @@ services:
       - SPRING_FLYWAY_URL=jdbc:postgresql://bs-postgres:5432/bsdb_order
       - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
       - BS_CATALOG_SERVICE_URI=http://catalog-service:9001
+      - SPRING_RABBITMQ_HOST=bs-rabbitmq
 
   edge-service:
     depends_on:
@@ -59,6 +60,17 @@ services:
       - SPRING_DATA_REDIS_HOST=bs-redis
       - CATALOG_SERVICE_URL=http://catalog-service:9001
       - ORDER_SERVICE_URL=http://order-service:9002
+
+  bs-dispatcher-service:
+    depends_on:
+      - bs-rabbitmq
+      - order-service
+    image: dispatcher-service
+    container_name: dispatcher-service
+    ports:
+      - 9003:9003
+    environment:
+      - SPRING_RABBITMQ_HOST=bs-rabbitmq
 
   bs-postgres:
     image: postgres:16-alpine
@@ -80,7 +92,7 @@ services:
 
   bs-rabbitmq:
     image: rabbitmq:3.10-management
-    container_name: polar-rabbitmq
+    container_name: bs-rabbitmq
     ports:
       - 5672:5672
       - 15672:15672
