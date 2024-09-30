@@ -70,6 +70,7 @@ services:
     ports:
       - 9003:9003
     environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
       - SPRING_RABBITMQ_HOST=bs-rabbitmq
 
   bs-postgres:
