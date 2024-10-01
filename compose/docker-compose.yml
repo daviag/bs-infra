@@ -1,4 +1,13 @@
 services:
+
+  bs-ui:
+    image: "ghcr.io/polarbookshop/polar-ui:v1"
+    container_name: "bs-ui"
+    ports:
+      - 9004:9004
+    environment:
+      - PORT=9004
+
   config-service:
     image: config-service
     container_name: config_service
@@ -99,3 +108,15 @@ services:
       - 15672:15672
     volumes:
       - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+
+  bs-keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    container_name: bs-keycloak
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    environment:
+      - KEYCLOAK_ADMIN=user
+      - KEYCLOAK_ADMIN_PASSWORD=password
+    ports:
+      - 8080:8080
