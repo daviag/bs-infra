@@ -57,6 +57,7 @@ services:
     depends_on:
       - config-service
       - bs-redis
+      - bs-keycloak
     image: edge-service
     container_name: edge-service
     ports:
@@ -69,6 +70,8 @@ services:
       - SPRING_DATA_REDIS_HOST=bs-redis
       - CATALOG_SERVICE_URL=http://catalog-service:9001
       - ORDER_SERVICE_URL=http://order-service:9002
+      - SPA_URL=http://bs-ui:9004
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUER_URI=http://host.docker.internal:8080/realms/Bookshop
 
   bs-dispatcher-service:
     depends_on:
