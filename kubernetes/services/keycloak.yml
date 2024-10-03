@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: bookshop-keycloak
-          image: quay.io/keycloak/keycloak:24.0
+          image: quay.io/keycloak/keycloak:25.0
           args:
             - "start-dev"
             - "--import-realm"
@@ -26,8 +26,6 @@ spec:
               value: user
             - name: KEYCLOAK_ADMIN_PASSWORD
               value: password
-#            - name: KEYCLOAK_MIGRATION_STRATEGY
-#              value: IGNORE_EXISTING
           startupProbe:
             httpGet:
               path: /realms/master
