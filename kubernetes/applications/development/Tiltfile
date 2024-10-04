@@ -1,6 +1,6 @@
 include('../../../../bs-config-service/Tiltfile')
 include('../../../../bs-order-service/Tiltfile')
-include('../../../../bs-book-catalog-service/Tiltfile')
+include('../../../../bs-catalog-service/Tiltfile')
 include('../../../../bs-edge-service/Tiltfile')
 include('../../../../bs-dispatcher-service/Tiltfile')
 
