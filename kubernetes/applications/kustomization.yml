@@ -1,3 +1,5 @@
 resources:
-- catalog-service/staging
 - edge-service/staging
+- dispatcher-service/staging
+- catalog-service/staging
+- order-service/staging
