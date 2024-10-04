@@ -1,0 +1,5 @@
+resources:
+- ../edge-service/staging
+- ../dispatcher-service/staging
+- ../catalog-service/staging
+- ../order-service/staging
