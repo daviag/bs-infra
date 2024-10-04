@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- github.com/daviag/bs-catalog-service/k8s?ref=f9bb964f10af4db952155d7d1aba420ebfdf2c53
+- github.com/daviag/bs-catalog-service/k8s?ref=5c00919f47b122598cf5789f5d12e674bd8a9e41
 
 patchesStrategicMerge:
 - patch-env.yml
@@ -18,7 +18,7 @@ configMapGenerator:
 images:
 - name: catalog-service
   newName: ghcr.io/daviag/catalog-service
-  newTag: 077abc3ecbf7b30974684e6cdf94a3cccecf966f
+  newTag: 5c00919f47b122598cf5789f5d12e674bd8a9e41
 
 replicas:
 - count: 2
