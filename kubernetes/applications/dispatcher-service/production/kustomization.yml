@@ -2,24 +2,24 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - github.com/daviag/dispatcher-service/k8s?ref=main
+- github.com/daviag/dispatcher-service/k8s?ref=cb1f245ab4c0c2df1724962549b81b4d56984505
 
 patchesStrategicMerge:
-  - patch-env.yml
-  - patch-resources.yml
-  - patch-volumes.yml
+- patch-env.yml
+- patch-resources.yml
+- patch-volumes.yml
 
 configMapGenerator:
-  - behavior: merge
-    files:
-      - application-prod.yml
-    name: dispatcher-config
+- behavior: merge
+  files:
+  - application-prod.yml
+  name: dispatcher-config
 
 images:
-  - name: dispatcher-service
-    newName: ghcr.io/daviag/dispatcher-service
-    newTag: latest
+- name: dispatcher-service
+  newName: ghcr.io/daviag/dispatcher-service
+  newTag: cb1f245ab4c0c2df1724962549b81b4d56984505
 
 replicas:
-  - count: 1
-    name: dispatcher-service
+- count: 1
+  name: dispatcher-service
