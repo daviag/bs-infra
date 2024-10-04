@@ -2,25 +2,25 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - github.com/daviag/edge-service/k8s?ref=main
+- github.com/daviag/edge-service/k8s?ref=main
 
 patchesStrategicMerge:
-  - patch-env.yml
-  - patch-ingress.yml
-  - patch-resources.yml
-  - patch-volumes.yml
+- patch-env.yml
+- patch-ingress.yml
+- patch-resources.yml
+- patch-volumes.yml
 
 configMapGenerator:
-  - behavior: merge
-    files:
-      - application-prod.yml
-    name: edge-config
+- behavior: merge
+  files:
+  - application-prod.yml
+  name: edge-config
 
 images:
-  - name: edge-service
-    newName: ghcr.io/daviag/edge-service
-    newTag: latest
+- name: edge-service
+  newName: ghcr.io/daviag/edge-service
+  newTag: c476a10a67771dadf93ea2e5c18990bad66cca32
 
 replicas:
-  - count: 1
-    name: edge-service
+- count: 1
+  name: edge-service
